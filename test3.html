@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <style>
+        * {
+            padding: 0;
+            color: white;
+            font-size: large;
+            text-align: center;
+            font-weight: bold;
+            font-family: Roboto;
+        }
+
+        header {
+            background-image: linear-gradient(to right, #9b65ff, #9b85ff);
+            padding: 40px;
+            border: 1px solid black;
+            margin: 3px;
+        }
+
+        footer {
+            background-image: linear-gradient(to right, #9b65ff, #9b85ff);
+            padding: 45px;
+            border: 1px solid black;
+            color: white;
+            font-size: large;
+            text-align: center;
+            font-weight: bold;
+            margin: 3px;
+
+        }
+
+        .container {
+            display: grid;
+        }
+
+        .c1,
+        .c2,
+        .c3,
+        .sidebar {
+            border: 1px solid black;
+            padding: 120px 0;
+            margin: 3px;
+            text-align: center;
+            background-color: aqua;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar {
+            grid-column: 1/ 1;
+            grid-row: 1/ span 2;
+            background-color: #00eccc;
+        }
+
+        .c1 {
+            grid-column: 2/ span 2;
+        }
+
+        .c3 {
+            grid-row: 2;
+        }
+
+        .c3 {
+            grid-row: 2;
+        }
+
+        .c1,
+        .c2,
+        .c3 {
+            background-image: linear-gradient(to bottom right, #7940ff, hsl(180, 100%, 56%));
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">header</header>
+    <div class="container">
+        <div class="sidebar">
+            sidebar
+        </div>
+        <div class="c1">
+            Content-1
+        </div>
+        <div class="c2">
+            Content-2
+        </div>
+        <div class="c3">
+            Content-3
+        </div>
+    </div>
+    <footer class="footer">footer</footer>
+</body>
+
+</html>

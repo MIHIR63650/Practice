@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        canvas {
+            width: 800px;
+            height: 600px;
+            background-color: white;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas> </canvas>
+
+    <script>
+        const data = [
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1990",
+                name: "abc",
+            },
+            {
+                email: "pqr@gmail",
+                Salary: 1000,
+                dob: "12/12/1991",
+                name: "pqr",
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1992",
+                name: "xyz",
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1993",
+                name: "bac",
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1994",
+                name: "dsfg",
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1995",
+                name: "asdfasd",
+            },
+            {
+                email: "abc@gmail",
+                Salary: 3000,
+                dob: "12/12/1996",
+                name: "asabc",
+            },
+            {
+                email: "abc@gmail",
+                Salary: 5000,
+                dob: "12/12/1997",
+                name: "abcdsfg",
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1998",
+                name: "abdfc",
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1999",
+                name: "asdfgbc",
+            },
+        ];
+        const cell = {
+            width: 130,
+            height: 40,
+        };
+
+        const canvas = document.querySelector("canvas");
+        canvas.width = 800;
+        canvas.height = 600;
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "black";
+        ctx.font = "18px Arial";
+
+        let drawcells = () => {
+            ctx.fillStyle = "black";
+            if (startCell && startCell.x <= 3 && endCell.x >= 3) {
+                let total_salary = 0;
+                let max_salary = data[0].Salary;
+                let min_salary = data[0].Salary;
+                let avg_salary = 0;
+                for (let i = startCell.y; i <= endCell.y; i++) {
+                    total_salary += data[i].Salary;
+                    max_salary = Math.max(max_salary, data[i].Salary);
+                    min_salary = Math.min(min_salary, data[i].Salary);
+                }
+                avg_salary = total_salary / (endCell.y - startCell.y + 1);
+                console.log(total_salary);
+                ctx.fillText(`Total Salary: ${total_salary}`, 540, 40);
+                ctx.fillText(`Max Salary: ${max_salary}`, 540, 80);
+                ctx.fillText(`Min Salary: ${min_salary}`, 540, 120);
+                ctx.fillText(`Average Salary: ${avg_salary}`, 540, 160);
+            }
+            for (let i = 0; i < 10; i++) {
+                ctx.strokeRect(10, 10 + i * cell.height, cell.width, cell.height);
+                ctx.strokeRect(140, 10 + i * cell.height, cell.width, cell.height);
+                ctx.strokeRect(270, 10 + i * cell.height, cell.width, cell.height);
+                ctx.strokeRect(400, 10 + i * cell.height, cell.width, cell.height);
+            }
+
+            for (let i = 0; i < 10; i++) {
+                ctx.fillText(data[i].name, 15, 40 + i * cell.height);
+                +ctx.fillText(data[i].email, 145, 40 + i * cell.height);
+                ctx.fillText(data[i].dob, 275, 40 + i * cell.height);
+                ctx.fillText(data[i].Salary, 405, 40 + i * cell.height);
+            }
+
+        };
+
+        let isDragging = false;
+        let startCell = null;
+        let endCell = null;
+        drawcells();
+
+        function getEventPosition(event) {
+            let x, y;
+            if (event.changedTouches) {
+                x = event.changedTouches[0].pageX - canvas.offsetLeft;
+                y = event.changedTouches[0].pageY - canvas.offsetTop;
+            } else {
+                x = event.offsetX;
+                y = event.offsetY;
+            }
+            return { x, y };
+        }
+
+        canvas.addEventListener("mousedown", function (event) {
+            isDragging = true;
+            startCell = getCellFromCoords(event.offsetX, event.offsetY);
+            endCell = { ...startCell };
+            draw();
+        });
+
+        canvas.addEventListener("mousemove", function (event) {
+            if (!isDragging) return;
+            endCell = getCellFromCoords(event.offsetX, event.offsetY);
+            draw();
+        });
+
+        canvas.addEventListener("mouseup", function (event) {
+            isDragging = false;
+        });
+
+        function getCellFromCoords(x, y) {
+            return {
+                x: Math.floor((x - 10) / cell.width),
+                y: Math.floor((y - 10) / cell.height),
+            };
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawcells();
+            ctx.fillStyle = "rgba(0, 255, 0, 0.1)";
+            const [startX, endX] = [startCell.x, endCell.x].sort((a, b) => a - b);
+            const [startY, endY] = [startCell.y, endCell.y].sort((a, b) => a - b);
+            for (let x = startX; x <= endX; x++) {
+                for (let y = startY; y <= endY; y++) {
+                    ctx.fillRect(
+                        10 + x * cell.width,
+                        10 + y * cell.height,
+                        cell.width,
+                        cell.height
+                    );
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

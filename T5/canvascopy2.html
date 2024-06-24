@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+
+        canvas {
+            width: 600px;
+            height: 600px;
+            background-color: white;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas>
+
+    </canvas>
+
+    <script>
+
+        const data = [
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1990",
+                name: "abc"
+            },
+            {
+                email: "pqr@gmail",
+                Salary: 1000,
+                dob: "12/12/1991",
+                name: "pqr"
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1992",
+                name: "xyz"
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1993",
+                name: "bac"
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1994",
+                name: "dsfg"
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1995",
+                name: "asdfasd"
+            },
+            {
+                email: "abc@gmail",
+                Salary: 3000,
+                dob: "12/12/1996",
+                name: "asabc"
+            },
+            {
+                email: "abc@gmail",
+                Salary: 5000,
+                dob: "12/12/1997",
+                name: "abcdsfg"
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1998",
+                name: "abdfc"
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1999",
+                name: "asdfgbc"
+            },
+        ]
+        const cell = {
+            width: 130,
+            height: 40
+        }
+
+
+        const canvas = document.querySelector('canvas');
+        canvas.width = 600;
+        canvas.height = 600;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'black';
+        ctx.font = "18px Arial";
+
+
+        let isDragging = false;
+        let selectedcells = []
+
+
+
+
+        function getEventPosition(event) {
+            let x, y;
+            if (event.changedTouches) {
+                x = event.changedTouches[0].pageX - canvas.offsetLeft;
+                y = event.changedTouches[0].pageY - canvas.offsetTop;
+            } else {
+                x = event.offsetX;
+                y = event.offsetY;
+            }
+            return { x, y };
+        }
+
+        function handleMove(event) {
+            if (isDragging) {
+                const { x, y } = getEventPosition(event);
+                let val = Math.floor((y - 10) / 40);
+                ctx.strokeStyle = 'red';
+                if (x > 10 && x < 140) {
+                    console.log("1, " + val);
+                    selectedcells.push([1, val]);
+
+                    ctx.strokeRect(10, 10 + val * cell.height, cell.width, cell.height);
+                }
+                if (x > 140 && x < 270) {
+                    console.log("2, " + val);
+                    selectedcells.push([2, val]);
+
+                    ctx.strokeRect(140, 10 + val * cell.height, cell.width, cell.height);
+                }
+                if (x > 270 && x < 400) {
+                    console.log("3, " + val);
+                    selectedcells.push([3, val]);
+
+                    ctx.strokeRect(270, 10 + val * cell.height, cell.width, cell.height);
+
+                }
+                if (x > 400 && x < 530) {
+                    console.log("4, " + val);
+                    selectedcells.push([4, val]);
+
+                    ctx.strokeRect(400, 10 + val * cell.height, cell.width, cell.height);
+                    console.log("salary ", data[val].Salary)
+                }
+            }
+        }
+
+        canvas.addEventListener('mousedown', function (event) {
+            isDragging = true;
+        });
+
+
+        canvas.addEventListener('mouseup', function (event) {
+            isDragging = false;
+        });
+
+        canvas.addEventListener('touchstart', function (event) {
+            event.preventDefault();
+            isDragging = true;
+        }, { passive: false });
+
+
+        canvas.addEventListener('touchend', function (event) {
+            isDragging = false;
+        }, { passive: false });
+
+        canvas.addEventListener('touchmove', handleMove, { passive: false });
+        canvas.addEventListener('mousemove', handleMove);
+
+        for (let i = 0; i < 10; i++) {
+            ctx.strokeRect(10, 10 + i * cell.height, cell.width, cell.height);
+            ctx.strokeRect(140, 10 + i * cell.height, cell.width, cell.height);
+            ctx.strokeRect(270, 10 + i * cell.height, cell.width, cell.height);
+            ctx.strokeRect(400, 10 + i * cell.height, cell.width, cell.height);
+        }
+
+        for (let i = 0; i < 10; i++) {
+            ctx.fillText(data[i].name, 15, 40 + i * cell.height);
+            ctx.fillText(data[i].email, 145, 40 + i * cell.height);
+            ctx.fillText(data[i].dob, 275, 40 + i * cell.height);
+            ctx.fillText(data[i].Salary, 405, 40 + i * cell.height);
+        }
+
+        canvas.addEventListener('onpointerdown', function (event) {
+            console.log("down")
+        });
+
+
+
+
+
+
+
+        // canvas.addEventListener('click', function (event) {
+        //     const x = event.offsetX;
+        //     const y = event.offsetY;
+        //     let val = Math.floor((y - 10) / 40);
+        //     ctx.strokeStyle = 'red';
+
+        //     if (x > 10 && x < 140) {
+        //         console.log("A " + val);
+        //         ctx.strokeRect(10, 10 + val * cell.height, cell.width, cell.height);
+        //     }
+        //     if (x > 140 && x < 270) {
+        //         console.log("B " + val);
+        //         ctx.strokeRect(140, 10 + val * cell.height, cell.width, cell.height);
+        //     }
+        //     if (x > 270 && x < 400) {
+        //         console.log("C " + val);
+        //         ctx.strokeRect(270, 10 + val * cell.height, cell.width, cell.height);
+
+        //     }
+        //     if (x > 400 && x < 530) {
+        //         console.log("D " + val);
+        //         ctx.strokeRect(400, 10 + val * cell.height, cell.width, cell.height);
+        //         console.log("salary ", data[val].Salary)
+        //     }
+        // });
+
+
+
+        //calculate the coordinates of the click
+        // canvas.addEventListener('click', function (event) {
+        //     const rect = canvas.getBoundingClientRect();
+        //     const x = event.clientX - rect.left;
+        //     const y = event.clientY - rect.top;
+        //     console.log("x: " + x + " y: " + y);
+        // });
+
+
+        //calculate the size of the text
+        // const textMetrics = ctx.measureText("Hello World");
+        // console.log(textMetrics.width); 
+
+
+
+    </script>
+</body>
+
+</html>

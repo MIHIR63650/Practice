@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000000;
+            color: #000000;
+            font-family: Roboto;
+        }
+
+        .main {
+            width: 457px;
+            height: 138px;
+            background-color: #ffffff;
+            display: flex;
+            border: 2px solid black;
+            border-radius: 7px;
+        }
+
+        .img {
+            width: 130px;
+            height: 130px;
+            padding-top: 4px;
+            padding-left: 4px;
+            border-radius: 5px;
+        }
+
+        .content {
+            top: 0px;
+            padding: 14px;
+        }
+
+        .uname {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .para {
+            font-size: 20px;
+            padding-top: 14px;
+        }
+
+        .ic1 {
+            display: flex;
+            height: 20px;
+            margin-right: 24px;
+        }
+
+        .buttons {
+            display: flex;
+            padding-top: 24px;
+        }
+
+        .nums {
+            font-size: 15px;
+            font-weight: normal;
+            padding-top: 2px;
+            padding-left: 14px;
+            color: #858991;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <img src="./pfp.jfif"
+            class="img">
+        <div class="content">
+            <div class="uname">@moshhamedani</div>
+            <div class="para">I'd love to teach you HTML/CSS!</div>
+            <div class="buttons">
+                <div class="ic1">
+                    <img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAACA0lEQVR4nN1VPWsVURBdRcQvIkLQH2AULVUQQW1E8AdYiY1aqJ29iAPZmd2ZfW/zZm7kQcCPzk4trCStWkbQmEZMegs/ohAtzJP79r5Eyctm95k0OXCrmXvOuXPnzo2iTQ3mib0oehPZnhHrLLL96C6xj8T2lNjd8Dm1iQFgG4ndRdGvJNYpXWxfSNwdv6cSOZEeQLbXPQJkfYGZu5Ik+QjAxC6/RkUPJaxXfWxZTF9Bo71/zZIQ25vCmc5S5k6vZShmPYNic10zolOlJUOxh8H1e2g2hysd2Ze02RwmsZlCxO6vQj52HFkXSXQhzuxgVBNJko/4vZ4jTe3YSgE2LdzbWDQgSLQV7qPVJ2jThYA7OagAsp0KAm/7Bed9EMyGBhVg3yRFFeZXBIn12/8K5Hm+MzTJzw0pUZraiXCCd/UuqCKQFVZtVd9avTb1LVeVtIc0be9D0U9eIM7c+agfiPVBePozdR6aB4q2w97pTqezJSqZnlPhmHMk7mxUAbG4SyT2u+s+dedKk/3AQtaXy9NSJ1HsWpKMH240GrsB7u0hckcw04td59y6QGK/Qv54jXGtt1H0c9mojsUuL5GzTgLA9koCS0JmQyh2HUWfoNgH/9mQ6Pe/RvliaMvnAI92ROsF+ufD0ce1nVcT0AUSvbWuxD34Jhjl1tENIfcAgK1Vk/8A58SWnXoy3P4AAAAASUVORK5CYII=">
+                    <div class="nums"> 242</div>
+                </div>
+                <div class="ic1">
+                    <img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAABEUlEQVR4nO2TMU7DQBBFTUETUXICGg6QjtyCGlrELVYiu+z+KIIZi2abnCLKGVKkTpHcIElNB0bfXhlFDnGEUnqkKXY9/mPPvJ9lXZwtjPm4cpCp9283L3i/tZCdgxZ/pQ3ybaHrV+hjQyzGeOkgs7I46MqMx9fDoHc26Ocx0ZRfrK3FiqK4sNDJfnedGxN7bpQPLPTpcMqzhWzKeihqQe+174JGB12mL9yW55Dft43JQhfpndh4mETZbXHq3DvB/8+QC6sWp9tExpJnLrgu4uorQdlUSBzGhSgRKaK1hxp0QgR/u47yASFtA5mwE2TCTxO48l5mNEfzV7w8sIi2OioK2dGetKmDTGnbtjF1kZ0cPwmHUPLd60enAAAAAElFTkSuQmCC">
+                    <div class="nums">142</div>
+                </div>
+                <div class="ic1">
+                    <img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAABlUlEQVR4nNVTTUsbURQdW9tGLYV2VfdipOhvKG5LodAfIO4komDxB1wJ987cO8OYe0cpZFECghbTgqtSXOjaFj9+UuRmTKomaZtJNz1wYTjnzHln3psXBP8d6vX6I6JsLgzTGQAYv68755p7+uldpGk6gWJCbFcoto+ihyh6iaxgZk98SGyrzYkeEuuBe4mVARql3jDWU+JsBQAedPhms/mQYltHtm/56JpzHd29xFYh0ZM7oXmzbCUYABRd9RmkE1sFxaJfe8Z2dbvZsIC8qWeMB1WplX0/ghGBYp/DcGc2oMReoeiXUQOJ7auffACw+xTFzv9B4EWSJFN5Xdbjdt2CqEqtjKzfu0Qo+pZYPxVvp41Q9M0dEtmOMLJ3w4dl733/egRI0xd+C0js9V+HiS36O1H08XlfA+L2tB8QRrWlP4VhnC27N453X/7WCGbP2p/PugdQn+zRoVEiUfOrOLBZ3z9fdJNEf1Ci8x2+yjsLKPaTRD+0Wq2xYFh4GLKdIdvGzZzdXqAQAOAxscY+/jxSWBFcA6P74LWE1eR1AAAAAElFTkSuQmCC">
+                    <div class="nums">2.6k</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

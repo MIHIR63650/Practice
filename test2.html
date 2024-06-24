@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <style>
+        body {
+            background-color: rgb(255, 254, 196);
+            font-family: Roboto;
+            padding: 50px;
+        }
+
+        h1 {
+            color: rgb(255, 254, 196);
+            background-color: rgb(122, 2, 2);
+            text-align: center;
+            padding: 10px;
+            font-style: italic;
+            margin-bottom: 0;
+        }
+
+        h2 {
+            background-color: rgb(0, 158, 0);
+            color: white;
+            padding: 5px 10px;
+        }
+
+        p {
+            background-color: red;
+            height: 20px;
+            margin: 0px;
+        }
+
+        ul {
+            color: rgb(185, 0, 0);
+            font-style: italic;
+        }
+
+        h3 {
+            color: rgb(160, 160, 160);
+        }
+
+        table {
+            background-color: rgb(219, 219, 219);
+            ;
+        }
+
+        td {
+            border: 1px solid black;
+        }
+
+        strong {
+            font-style: italic;
+        }
+    </style>
+    <script defer>
+        formsubmit = () => {
+            v1 = document.getElementById("name").value;
+            v2 = document.getElementById("comment").value;
+            v3 = document.getElementById("Male").checked;
+            v4 = document.getElementById("Female").checked;
+            if (v1 == "") {
+                alert("Name cannot be empty");
+                document.getElementById("name").focus();
+            } else if (v2 == "") {
+                alert("Comments cannot be empty");
+                document.getElementById("comment").focus();
+            }
+            else if (!(v3 || v4)) {
+                alert("Select a gender");
+            }
+            else {
+                alert("Form submitted successfully");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>My first web page</h1>
+    <p> </p>
+    <h2>What this is</h2>
+    welcome to <i>my first webpage.</i> I created this webpage without the assistance of a webpage editor. Just my
+    little text editor and a keen <b style="font-style: italic;">UNDERSTANDING OF HTML.</b>
+    <h2>Why this is</h2>
+    <ul>
+
+        <li>To learn HTML</li>
+        <li>List element
+            <ol>
+                <li>Home</li>
+                <li>FAQ</li>
+                <li>Contact</li>
+                <li>About</li>
+            </ol>
+        </li>
+        <li>Here I have created ordered and unordered list</li>
+    </ul>
+    <h2>Zeuslearning.com</h2>
+    <a href="https://www.zeuslearning.com" target="_blank">This link will open zeuslearning.com in new tab</a>
+    <h2>On click of following image navigate to Google.com</h2>
+    <a href="https://google.com"><img src="./google.jpg" style="height: 150px; border: 1px solid black;"></a>
+    <h3>Some random table</h3>
+    <table style="border: 1px solid black;">
+        <tr>
+            <td>Row 1, cell 1</td>
+            <td>Row 1, cell 2</td>
+            <td>Row 1, cell 3</td>
+        </tr>
+        <tr>
+            <td>Row 2, cell 1</td>
+            <td>Row 2, cell 2</td>
+            <td>Row 2, cell 3</td>
+        </tr>
+        <tr>
+            <td>Row 3, cell 1</td>
+            <td>Row 3, cell 2</td>
+            <td>Row 3, cell 3</td>
+        </tr>
+        <tr>
+            <td>Row 4, cell 1</td>
+            <td>Row 4, cell 2</td>
+            <td>Row 4, cell 3</td>
+        </tr>
+    </table>
+    <h3>Some random form</h3>
+    <strong>Note:</strong> It looks the part, but won't do anything.
+    <br>
+    <br>
+    <form>
+        Name: <br><br>
+        <input type="text" name="name" placeholder="Your name" id="name"><br><br>
+        Comments: <br><br>
+        <textarea type="text" name="comments" id="comment" placeholder="Your comments" cols="30"
+            rows="10"></textarea><br> <br>
+        Are you: <br><br>
+        <input type="radio" name="gender" value="Male" id="Male">
+        <label for="Male">Male</label>
+        <br>
+        <br>
+        <input type="radio" name="gender" value="Female" id="Female">
+        <label for="Female">Female</label>
+        <br>
+        <br>
+        <button type="button" onclick="formsubmit()">Submit Query</button>
+    </form>
+</body>
+
+</html>

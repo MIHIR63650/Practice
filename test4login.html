@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <style>
+        @font-face {
+            font-family: 'Quicksand';
+            src: url('assets/Quicksand font 1/static/Quicksand-Regular.ttf') format('truetype');
+        }
+
+        body {
+            background-color: #EEEEEE;
+            font-family: 'Quicksand';
+            margin: 0px;
+        }
+
+        .main {
+            width: 500px;
+            margin: auto;
+            background-color: white;
+            text-align: center;
+            padding: 10px 30px 30px 30px;
+            margin-top: 100px;
+            margin-bottom: 150px;
+            border-radius: 5px;
+            border-top: 6px solid rgb(0, 195, 255);
+        }
+
+        .backbtn {
+            display: inline;
+            width: 30px;
+            margin-top: 5px;
+            cursor: pointer;
+            position: absolute;
+            left: calc(50% - 250px);
+        }
+
+        .head {
+            margin-bottom: 40px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        h1 {
+            display: inline;
+        }
+
+        .type {
+            display: flex;
+            justify-content: left;
+            margin: 0 px;
+        }
+
+        .options {
+            margin-right: 20px;
+        }
+
+        .radio {
+            margin: 10px;
+            width: 20px;
+            accent-color: #1F7A54;
+            transform: scale(1.5);
+        }
+
+        .forradio {
+            font-weight: bold;
+            font-size: large;
+        }
+
+        .label {
+            text-align: left;
+            margin-bottom: 3px;
+            margin-left: 3px;
+            font-size: small;
+            font-weight: 700;
+            color: gray;
+        }
+
+        .dropdown {
+            width: 100%;
+            height: 30px;
+            border: none;
+            border-bottom: 1px solid rgb(197, 197, 197);
+            text-align: left;
+            font-size: 17px;
+        }
+
+        .input {
+            width: 100%;
+            height: 30px;
+            border: none;
+            border-bottom: 1px solid rgb(197, 197, 197);
+            text-align: left;
+            font-size: 17px;
+
+        }
+
+        .extra {
+            text-align: right;
+            margin-top: 4px;
+            font-weight: bold;
+            color: #00854d;
+        }
+
+        .remember {
+            text-align: left;
+        }
+
+        .submit {
+            width: 200px;
+            height: 40px;
+            border-radius: 3px;
+            background-color: #3FD28B;
+            border: none;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .eye {
+            width: 35px;
+            position: absolute;
+            top: 545px;
+            left: calc(50% + 215px);
+        }
+
+        .headimg {
+            height: 70px;
+            width: 100%;
+            object-fit: cover;
+            filter: brightness(0.2);
+            filter: contrast(3);
+            background: linear-gradient(#050044, #050044);
+        }
+        .navlogo{
+            position: absolute;
+            z-index: 4;
+            height: 50px;
+            top: 10px;
+            left: 7%;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <img src="./assets/icons/logo used in header.svg" alt="" class="navlogo">
+        <img src="./assets/header pattern svg.svg" alt="" class="headimg">
+    </nav>
+    <div class="main">
+        <div class="head">
+            <img src="./assets/icons/back.svg" class="backbtn">
+            <h1>Log in with Quantum</h1>
+        </div>
+
+        <form>
+            <div class="type">
+                <div class="options">
+                    <input type="radio" name="type" class="radio"><label for="type" class="forradio">District</label>
+                </div>
+                <div class="options">
+                    <input type="radio" name="type" class="radio"><label for="type" class="forradio">Independent
+                        School</label>
+                </div>
+            </div>
+            <br>
+            <br>
+            <p class="label">State*</p>
+            <select name="cars" id="cars" class="dropdown">
+                <option value="volvo">Alabama</option>
+                <option value="saab">Saab</option>
+                <option value="opel">Opel</option>
+                <option value="audi">idk</option>
+            </select>
+            <br>
+            <br>
+            <p class="label">District*</p>
+            <select name="cars" id="cars" class="dropdown">
+                <option value="volvo">Alabama School District</option>
+                <option value="saab">Saab</option>
+                <option value="opel">Opel</option>
+                <option value="audi">idk</option>
+            </select>
+            <br>
+            <br>
+            <br>
+            <input type="text" placeholder="Username/Email ID*" class="input">
+            <div class="extra">FORGOT USERNAME?</div>
+            <br>
+            <br>
+            <div>
+                <input type="text" placeholder="Password*" class="input">
+                <div class="extra">FORGOT PASSWORD?</div>
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAADLElEQVR4nO1YW0tUURQ+hlFUPhRFmOPeRwhUiIrs9uRUT1EmzFlro0UQlE4UFXQZPWuNcHrstcde+wVpD+UtyD+hlfUDqjetIE1jz4wFzeWsuaXF+WDBYc6etb91PWtvx4kQIUKECBEi/CfoSiY3txEcVGRQsbmlGIazYp89sO/sGmcjoWUoEdNpc08xvtKEXzTjakmxawimNcFd+991I+4OJw5phqeaYTmUdFFj4IdmfO76cOKvEW9jc1wzTFRMuogoxvGYnzhWN+I6uLJVEz6qyuOSiBA82Xv/8vaakle+6VIEczIiMKEYB9wR026JWNHkdSiCQU04KYoGwZzdsybkW9m7oBkWw1MA3rhprztMn0smrgjfChyxqHzoqYq8JnNDkjKK8LXyL+2U6rVrNeOMwIhll/B6ReTdtOnTjCsSz5dDfg2xwOzSDO8EKbWi0mjKUt7KcFTU0zOF5512KoSb9rqFNfFNc+KkSOn+22e3aMb30oItqCQINuWKdkwzjNqidhynodBSzTgl7FDzlluoAYpwSNr2csTyyNuPUz4BHLPv8vZjk5TvZ1Ilyds5RTN+liq0rTLfATBYPBXMtbwIkNch3U8TfHKCeGNRAzSbw2JljKvtqd6mfEI2bYqm3Oif69tTvU3l7GlHmHUzQBE+q6sBThBvtGGqKoUYB0pE4GqewSN9nfIagI8lUyhLwKSqLuKCUcikT0NVRezDA0fURgnmZUWFk0XUNNiCtSmTlUzxFm6jBNM1baMZr/imS/ohU2lzxqkQLpm4zPvwVfwh+2UEe5A7cIR55kNzcHF3PUcJTdhfrv6cESapCZcEm8xYQuWRFwxzhEsF66xMI85rgoXQVLIjchpOhemzs5PI8wQL2vfOVUX+txGJI4pxVtgtpjKRG+nr3BOYHVbsczaasoJVjLN2T6f2R0p4qBi+S9te2UK4pAkfNwc925x6wY7aivBljcmvKIYXNTtGSmAvqTLXKrIiL3mtEqvnbUQYYmxaFMOd7FVL+Nk5c9ZlHLf/aU3173M2FIJ4Y4wSBzSBpxlvrl0t2mf7m30XOstEiBAhQoQIEZx/Bz8BD8DVUvIBYzEAAAAASUVORK5CYII="
+                    class="eye">
+            </div>
+            <br>
+            <div class="remember">
+                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" class="radio" style="margin: 5px;">
+                <label for="vehicle1" class="forradio">Remember me</label><br>
+            </div>
+            <br>
+            <br>
+            <button class="submit">LOG IN</button>
+        </form>
+    </div>
+</body>
+
+</html>
