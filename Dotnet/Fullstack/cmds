@@ -1,1 +1,0 @@
-dotnet aspnet-codegenerator controller -name UserItemsController -async -api -m UserItem -dc UserContext -outDir Controllers
