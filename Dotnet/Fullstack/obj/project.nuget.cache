@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OEK7Uskg/d8=",
+  "dgSpecHash": "apFtbKjHevg=",
   "success": true,
-  "projectFilePath": "c:\\Practice\\Dotnet\\Fullstack\\Fullstack.csproj",
+  "projectFilePath": "C:\\Practice\\Dotnet\\Fullstack\\Fullstack.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MIHIR.SAVLA\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\MIHIR.SAVLA\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
@@ -117,6 +117,7 @@
     "C:\\Users\\MIHIR.SAVLA\\.nuget\\packages\\microsoft.visualstudio.web.codegenerators.mvc\\8.0.2\\microsoft.visualstudio.web.codegenerators.mvc.8.0.2.nupkg.sha512",
     "C:\\Users\\MIHIR.SAVLA\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
     "C:\\Users\\MIHIR.SAVLA\\.nuget\\packages\\mono.texttemplating\\2.3.1\\mono.texttemplating.2.3.1.nupkg.sha512",
+    "C:\\Users\\MIHIR.SAVLA\\.nuget\\packages\\mysqlconnector\\2.3.7\\mysqlconnector.2.3.7.nupkg.sha512",
     "C:\\Users\\MIHIR.SAVLA\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\MIHIR.SAVLA\\.nuget\\packages\\nuget.common\\6.9.1\\nuget.common.6.9.1.nupkg.sha512",
     "C:\\Users\\MIHIR.SAVLA\\.nuget\\packages\\nuget.configuration\\6.9.1\\nuget.configuration.6.9.1.nupkg.sha512",

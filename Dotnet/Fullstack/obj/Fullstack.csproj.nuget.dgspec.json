@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Practice\\Dotnet\\Fullstack\\Fullstack.csproj": {}
+    "C:\\Practice\\Dotnet\\Fullstack\\Fullstack.csproj": {}
   },
   "projects": {
-    "c:\\Practice\\Dotnet\\Fullstack\\Fullstack.csproj": {
+    "C:\\Practice\\Dotnet\\Fullstack\\Fullstack.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Practice\\Dotnet\\Fullstack\\Fullstack.csproj",
+        "projectUniqueName": "C:\\Practice\\Dotnet\\Fullstack\\Fullstack.csproj",
         "projectName": "Fullstack",
-        "projectPath": "c:\\Practice\\Dotnet\\Fullstack\\Fullstack.csproj",
+        "projectPath": "C:\\Practice\\Dotnet\\Fullstack\\Fullstack.csproj",
         "packagesPath": "C:\\Users\\MIHIR.SAVLA\\.nuget\\packages\\",
-        "outputPath": "c:\\Practice\\Dotnet\\Fullstack\\obj\\",
+        "outputPath": "C:\\Practice\\Dotnet\\Fullstack\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MIHIR.SAVLA\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -66,6 +66,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[8.0.2, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.3.7, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
