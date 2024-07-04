@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Practice\\dotnet-task\\dotnet-task.csproj": {}
+    "C:\\Practice\\dotnet-task\\dotnet-task.csproj": {}
   },
   "projects": {
-    "c:\\Practice\\dotnet-task\\dotnet-task.csproj": {
+    "C:\\Practice\\dotnet-task\\dotnet-task.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Practice\\dotnet-task\\dotnet-task.csproj",
+        "projectUniqueName": "C:\\Practice\\dotnet-task\\dotnet-task.csproj",
         "projectName": "dotnet-task",
-        "projectPath": "c:\\Practice\\dotnet-task\\dotnet-task.csproj",
+        "projectPath": "C:\\Practice\\dotnet-task\\dotnet-task.csproj",
         "packagesPath": "C:\\Users\\MIHIR.SAVLA\\.nuget\\packages\\",
-        "outputPath": "c:\\Practice\\dotnet-task\\obj\\",
+        "outputPath": "C:\\Practice\\dotnet-task\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MIHIR.SAVLA\\AppData\\Roaming\\NuGet\\NuGet.Config"

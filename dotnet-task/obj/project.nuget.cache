@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Q0CNtS2bUM4=",
+  "dgSpecHash": "Y6CsqnntuQo=",
   "success": true,
-  "projectFilePath": "c:\\Practice\\dotnet-task\\dotnet-task.csproj",
+  "projectFilePath": "C:\\Practice\\dotnet-task\\dotnet-task.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MIHIR.SAVLA\\.nuget\\packages\\csvhelper\\33.0.1\\csvhelper.33.0.1.nupkg.sha512",
     "C:\\Users\\MIHIR.SAVLA\\.nuget\\packages\\exceldatareader\\3.7.0\\exceldatareader.3.7.0.nupkg.sha512",
