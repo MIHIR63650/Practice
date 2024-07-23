@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Practice\\MyApiProject\\MyApiProject.csproj": {}
+    "C:\\Practice\\MyApiProject\\MyApiProject.csproj": {}
   },
   "projects": {
-    "c:\\Practice\\MyApiProject\\MyApiProject.csproj": {
+    "C:\\Practice\\MyApiProject\\MyApiProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Practice\\MyApiProject\\MyApiProject.csproj",
+        "projectUniqueName": "C:\\Practice\\MyApiProject\\MyApiProject.csproj",
         "projectName": "MyApiProject",
-        "projectPath": "c:\\Practice\\MyApiProject\\MyApiProject.csproj",
+        "projectPath": "C:\\Practice\\MyApiProject\\MyApiProject.csproj",
         "packagesPath": "C:\\Users\\MIHIR.SAVLA\\.nuget\\packages\\",
-        "outputPath": "c:\\Practice\\MyApiProject\\obj\\",
+        "outputPath": "C:\\Practice\\MyApiProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MIHIR.SAVLA\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lzJGOmEXxuQ=",
+  "dgSpecHash": "ty4X+s/9H/Q=",
   "success": true,
-  "projectFilePath": "c:\\Practice\\MyApiProject\\MyApiProject.csproj",
+  "projectFilePath": "C:\\Practice\\MyApiProject\\MyApiProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MIHIR.SAVLA\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\MIHIR.SAVLA\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

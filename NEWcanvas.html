@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        canvas {
+            width: 100vw;
+            height: 100vh;
+            background-color: white;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas> </canvas>
+
+    <script>
+
+        const data = [
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1990",
+                name: "abc",
+            },
+            {
+                email: "abcd@gmail",
+                Salary: 15000,
+                dob: "12/12/1995",
+                name: "abcd",
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1990",
+                name: "abc",
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1990",
+                name: "abc",
+            },
+            {
+                email: "pqr@gmail",
+                Salary: 1000,
+                dob: "12/12/1991",
+                name: "pqr",
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1992",
+                name: "xyz",
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1990",
+                name: "abc",
+            },
+            {
+                email: "pqr@gmail",
+                Salary: 1000,
+                dob: "12/12/1991",
+                name: "pqr",
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1992",
+                name: "xyz",
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1990",
+                name: "abc",
+            },
+            {
+                email: "pqr@gmail",
+                Salary: 1000,
+                dob: "12/12/1991",
+                name: "pqr",
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1992",
+                name: "xyz",
+            },
+            {
+                email: "abc@gmail",
+                Salary: 1000,
+                dob: "12/12/1993",
+                name: "bac",
+            }
+        ];
+
+
+        const canvas = document.querySelector("canvas");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const ctx = canvas.getContext("2d");
+        ctx.font = "18px Arial";
+
+        class cell {
+            width = 120;
+            height = 50;
+            constructor(x, y, text, fill = false) {
+                if (fill) {
+                    ctx.fillStyle = "rgba(124,252,0, 0.3)";
+                    ctx.fillRect(x, y, this.width, this.height);
+                    ctx.fillStyle = "black";
+                }
+                ctx.strokeRect(x, y, this.width, this.height);
+                ctx.fillText(text, x + 10, y + 30);
+            }
+        }
+
+
+        class gird {
+            datapos = 0;
+            constructor() {
+                let cella
+                // Render row ids
+                for (let j = 1; j < window.innerHeight / 50; j++) {
+                    cella = new cell(0, 50 * j, j, true);
+                }
+                // Render column ids
+                for (let j = 1; j < window.innerWidth / 120; j++) {
+                    cella = new cell(120 * j, 0, String.fromCharCode(64 + j % 26), true);
+                }
+                // Render Rectangles
+                for (let j = 1; j < window.innerHeight / 50; j++) {
+                    for (let i = 1; i < window.innerWidth / 120; i++) {
+                        ctx.strokeRect(i * 120, j * 50, 120, 50);
+                    }
+                }
+                // Render the data
+                for (let i = 1; i <= data.length; i++) {
+                    let j = 1;
+                    for (let value in data[i]) {
+                        cella = new cell(j * 120, 50 * i, data[i - 1][value]);
+                        // ctx.fillText(data[i][value], 10 + j * 120, 30 + 50 * i);
+                        j++;
+                    }
+                }
+            }
+
+            rerender(offset) {
+                let cella;
+                ctx.clearRect(0, 50, window.innerWidth, window.innerHeight);
+                for (let j = 1; j < window.innerHeight / 50; j++) {
+                    for (let i = 1; i < window.innerWidth / 120; i++) {
+                        ctx.strokeRect(i * 120, j * 50, 120, 50);
+                    }
+                }
+                if (offset > 0) {
+                    this.datapos += 1;
+                } else {
+                    this.datapos = Math.max(0, this.datapos - 1)
+                }
+                for (let j = 1 + this.datapos; j < this.datapos + innerHeight / 50; j++) {
+                    cella = new cell(0, 50 * j - 50 * this.datapos, j, true);
+                }
+                for (let i = 1; i < data.length - this.datapos; i++) {
+                    let j = 1;
+                    for (let value in data[i]) {
+                        cella = new cell(j * 120, 50 * i, data[i + this.datapos][value]);
+                        j++;
+                    }
+                }
+            }
+        }
+
+        let grid = new gird();
+
+
+        canvas.addEventListener('wheel', function (event) {
+            grid.rerender(event.deltaY)
+        });
+
+
+    </script>
+</body>
+
+</html>
