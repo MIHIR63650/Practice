@@ -116,10 +116,12 @@
         canvas.height = window.innerHeight;
         const ctx = canvas.getContext("2d");
         ctx.font = "18px Arial";
+        let cellWidth = 120;
+        let cellHeight = 40;
 
         class cell {
-            width = 120;
-            height = 50;
+            width = cellWidth;
+            height = cellHeight;
             constructor(x, y, text, fill = false) {
                 if (fill) {
                     ctx.fillStyle = "rgba(124,252,0, 0.3)";
@@ -127,63 +129,72 @@
                     ctx.fillStyle = "black";
                 }
                 ctx.strokeRect(x, y, this.width, this.height);
-                ctx.fillText(text, x + 10, y + 30);
+                ctx.fillText(text, x + 5, y + 25);
             }
         }
 
 
         class gird {
             datapos = 0;
+            cella;
             constructor() {
-                let cella
                 // Render row ids
-                for (let j = 1; j < window.innerHeight / 50; j++) {
-                    cella = new cell(0, 50 * j, j, true);
+                for (let j = 1; j < window.innerHeight / cellHeight; j++) {
+                    this.cella = new cell(0, cellHeight * j, j, true);
                 }
                 // Render column ids
-                for (let j = 1; j < window.innerWidth / 120; j++) {
-                    cella = new cell(120 * j, 0, String.fromCharCode(64 + j % 26), true);
+                for (let j = 1; j < window.innerWidth / cellWidth; j++) {
+                    this.cella = new cell(cellWidth * j, 0, String.fromCharCode(64 + j % 26), true);
                 }
                 // Render Rectangles
-                for (let j = 1; j < window.innerHeight / 50; j++) {
-                    for (let i = 1; i < window.innerWidth / 120; i++) {
-                        ctx.strokeRect(i * 120, j * 50, 120, 50);
+                for (let j = 1; j < window.innerHeight / cellHeight; j++) {
+                    for (let i = 1; i < window.innerWidth / cellWidth; i++) {
+                        ctx.strokeRect(i * cellWidth, j * cellHeight, cellWidth, cellHeight);
                     }
                 }
                 // Render the data
-                for (let i = 1; i <= data.length; i++) {
-                    let j = 1;
+                for (let i = 0; i < data.length; i++) {
+                    let j = 0;
                     for (let value in data[i]) {
-                        cella = new cell(j * 120, 50 * i, data[i - 1][value]);
-                        // ctx.fillText(data[i][value], 10 + j * 120, 30 + 50 * i);
+                        this.cella = new cell((j + 1) * cellWidth, (i + 1) * cellHeight, data[i][value]);
                         j++;
                     }
                 }
             }
 
             rerender(offset) {
-                let cella;
-                ctx.clearRect(0, 50, window.innerWidth, window.innerHeight);
-                for (let j = 1; j < window.innerHeight / 50; j++) {
-                    for (let i = 1; i < window.innerWidth / 120; i++) {
-                        ctx.strokeRect(i * 120, j * 50, 120, 50);
+                ctx.lineWidth = 1
+                ctx.strokeStyle = "black";
+                ctx.clearRect(0, cellHeight, window.innerWidth, window.innerHeight);
+                for (let j = 1; j < window.innerHeight / cellHeight; j++) {
+                    for (let i = 1; i < window.innerWidth / cellWidth; i++) {
+                        ctx.strokeRect(i * cellWidth, j * cellHeight, cellWidth, cellHeight);
                     }
                 }
                 if (offset > 0) {
                     this.datapos += 1;
-                } else {
+                } else if (offset < 0) {
                     this.datapos = Math.max(0, this.datapos - 1)
                 }
-                for (let j = 1 + this.datapos; j < this.datapos + innerHeight / 50; j++) {
-                    cella = new cell(0, 50 * j - 50 * this.datapos, j, true);
+                for (let j = 1 + this.datapos; j < this.datapos + innerHeight / cellHeight; j++) {
+                    this.cella = new cell(0, cellHeight * j - cellHeight * this.datapos, j, true);
                 }
-                for (let i = 1; i < data.length - this.datapos; i++) {
-                    let j = 1;
+                for (let i = 0; i < data.length - this.datapos; i++) {
+                    let j = 0;
                     for (let value in data[i]) {
-                        cella = new cell(j * 120, 50 * i, data[i + this.datapos][value]);
+                        this.cella = new cell((j + 1) * cellWidth, (i + 1) * cellHeight, data[i + this.datapos][value]);
                         j++;
                     }
                 }
+            }
+
+            highlight(x, y) {
+                this.rerender(0);
+                let i = Math.floor(x / cellWidth);
+                let j = Math.floor(y / cellHeight);
+                ctx.lineWidth = 4
+                ctx.strokeStyle = "green";
+                ctx.strokeRect(i * cellWidth, j * cellHeight, cellWidth, cellHeight);
             }
         }
 
@@ -192,7 +203,10 @@
 
         canvas.addEventListener('wheel', function (event) {
             grid.rerender(event.deltaY)
-        });
+        }, { passive: true });
+        canvas.addEventListener('click', function (event) {
+            grid.highlight(event.x, event.y);
+        }, { passive: true });
 
 
     </script>
