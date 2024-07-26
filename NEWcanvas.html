@@ -189,12 +189,25 @@
             }
 
             highlight(x, y) {
-                this.rerender(0);
                 let i = Math.floor(x / cellWidth);
                 let j = Math.floor(y / cellHeight);
-                ctx.lineWidth = 4
-                ctx.strokeStyle = "green";
-                ctx.strokeRect(i * cellWidth, j * cellHeight, cellWidth, cellHeight);
+                if (i == 0 && j == 0) {
+                    return;
+                }
+                if (j === 0) {
+                    this.rerender(0);
+                    ctx.fillStyle = "rgba(135,206,250, 0.3)";
+                    ctx.fillRect(i * cellWidth, (j + 1) * cellHeight, cellWidth, window.innerHeight);
+                } else if (i === 0) {
+                    this.rerender(0);
+                    ctx.fillStyle = "rgba(135,206,250, 0.3)";
+                    ctx.fillRect((i + 1) * cellWidth, j * cellHeight, window.innerWidth, cellHeight);
+                } else {
+                    this.rerender(0);
+                    ctx.lineWidth = 4
+                    ctx.strokeStyle = "rgb(0,0,255)";
+                    ctx.strokeRect(i * cellWidth, j * cellHeight, cellWidth, cellHeight);
+                }
             }
         }
 
@@ -207,6 +220,13 @@
         canvas.addEventListener('click', function (event) {
             grid.highlight(event.x, event.y);
         }, { passive: true });
+        //to highlight the selected section of the cells
+        // canvas.addEventListener('mousemove', function (event) {
+        //     grid.highlight(event.x, event.y);
+        // }, { passive: true });
+        // canvas.addEventListener('mousedown', function (event) {
+        //     grid.highlight(event.x, event.y);
+        // }, { passive: true });
 
 
     </script>
