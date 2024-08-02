@@ -446,10 +446,10 @@
             this.fillgrid();
             this.filldata();
             ctx.fillStyle = "rgba(0, 255, 48, 0.25)";
-            ctx.fillRect(startCellx * this.width, startCelly * this.height, (endCellx - startCellx + 1) * this.width, (endCelly - startCelly + 1) * this.height);
-            ctx.strokeRect(startCellx * this.width, startCelly * this.height, (endCellx - startCellx + 1) * this.width, (endCelly - startCelly + 1) * this.height);
-            ctx.fillRect(0, startCelly * this.height, this.width, (endCelly - startCelly + 1) * this.height);
-            ctx.strokeRect(0, startCelly * this.height, this.width, (endCelly - startCelly + 1) * this.height);
+            ctx.fillRect(startCellx * this.width, this.vertical_lines_pos[startCelly], (endCellx - startCellx + 1) * this.width, (this.vertical_lines_pos[endCelly + 1] - this.vertical_lines_pos[startCelly]));
+            ctx.strokeRect(startCellx * this.width, this.vertical_lines_pos[startCelly], (endCellx - startCellx + 1) * this.width, (this.vertical_lines_pos[endCelly + 1] - this.vertical_lines_pos[startCelly]));
+            ctx.fillRect(0, this.vertical_lines_pos[startCelly], this.width, (this.vertical_lines_pos[endCelly + 1] - this.vertical_lines_pos[startCelly]));
+            ctx.strokeRect(0, this.vertical_lines_pos[startCelly], this.width, (this.vertical_lines_pos[endCelly + 1] - this.vertical_lines_pos[startCelly]));
             ctx.fillRect(startCellx * this.width, 0, (endCellx - startCellx + 1) * this.width, this.height);
             ctx.strokeRect(startCellx * this.width, 0, (endCellx - startCellx + 1) * this.width, this.height);
         }
