@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeus Excel</title>
+
+    <link rel="icon" href="excel icon.png" type="image/x-icon">
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        canvas {
+            width: 100vw;
+            height: 100vh;
+            background-color: white;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas></canvas>
+</body>
+<script>
+    const data = [
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "abcd@gmail",
+            Salary: 15000,
+            dob: "12/12/1995",
+            name: "abcd",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "pqr@gmail",
+            Salary: 1000,
+            dob: "12/12/1991",
+            name: "pqr",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1992",
+            name: "xyz",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "pqr@gmail",
+            Salary: 1000,
+            dob: "12/12/1991",
+            name: "pqr",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1992",
+            name: "xyz",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "pqr@gmail",
+            Salary: 1000,
+            dob: "12/12/1991",
+            name: "pqr",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1992",
+            name: "xyz",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1993",
+            name: "bac",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "abcd@gmail",
+            Salary: 15000,
+            dob: "12/12/1995",
+            name: "abcd",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "pqr@gmail",
+            Salary: 1000,
+            dob: "12/12/1991",
+            name: "pqr",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1992",
+            name: "xyz",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "pqr@gmail",
+            Salary: 1000,
+            dob: "12/12/1991",
+            name: "pqr",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1992",
+            name: "xyz",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "pqr@gmail",
+            Salary: 1000,
+            dob: "12/12/1991",
+            name: "pqr",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1992",
+            name: "xyz",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1993",
+            name: "bac",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "abcd@gmail",
+            Salary: 15000,
+            dob: "12/12/1995",
+            name: "abcd",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "pqr@gmail",
+            Salary: 1000,
+            dob: "12/12/1991",
+            name: "pqr",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1992",
+            name: "xyz",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "pqr@gmail",
+            Salary: 1000,
+            dob: "12/12/1991",
+            name: "pqr",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1992",
+            name: "xyz",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "pqr@gmail",
+            Salary: 1000,
+            dob: "12/12/1991",
+            name: "pqr",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1992",
+            name: "xyz",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1993",
+            name: "bac",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "abcd@gmail",
+            Salary: 15000,
+            dob: "12/12/1995",
+            name: "abcd",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "pqr@gmail",
+            Salary: 1000,
+            dob: "12/12/1991",
+            name: "pqr",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1992",
+            name: "xyz",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "pqr@gmail",
+            Salary: 1000,
+            dob: "12/12/1991",
+            name: "pqr",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1992",
+            name: "xyz",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1990",
+            name: "abc",
+        },
+        {
+            email: "pqr@gmail",
+            Salary: 1000,
+            dob: "12/12/1991",
+            name: "pqr",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1992",
+            name: "xyz",
+        },
+        {
+            email: "abc@gmail",
+            Salary: 1000,
+            dob: "12/12/1993",
+            name: "bac",
+        },
+    ];
+    const canvas = document.querySelector("canvas");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const ctx = canvas.getContext("2d");
+
+    class cell {
+        constructor(x, y, text) {
+            ctx.fillStyle = "black";
+            ctx.font = "15px Arial";
+            ctx.textAlign = "center"
+            ctx.fillText(text, x, y);
+        }
+    }
+
+
+    class grid {
+        width = 100;
+        height = 40;
+        cella;
+
+        fillgrid() {
+            ctx.fillStyle = "rgba(0, 255, 48, 0.25)";
+            ctx.fillRect(0, this.height, this.width, canvas.height);
+            ctx.fillRect(this.width, 0, canvas.width, this.height);
+            ctx.beginPath();
+            for (let i = 0; i < canvas.width / this.width; i++) {
+                ctx.moveTo(0.5 + i * this.width, 0);
+                ctx.lineTo(0.5 + i * this.width, canvas.height);
+                ctx.stroke();
+            }
+            for (let i = 0; i < canvas.height / this.height; i++) {
+                ctx.moveTo(0, 0.5 + i * this.height);
+                ctx.lineTo(canvas.width, 0.5 + i * this.height);
+                ctx.stroke();
+            }
+
+            for (let j = 1; j < window.innerHeight / this.height; j++) {
+                this.cella = new cell(this.width / 2, 25 + this.height * j, j);
+            }
+            for (let j = 1; j < window.innerWidth / this.width; j++) {
+                this.cella = new cell(this.width * j + this.width / 2, this.height / 2 + 10, String.fromCharCode(64 + j % 26));
+            }
+        }
+
+        getcell(x, y) {
+            let row = Math.floor(y / this.height);
+            let col = Math.floor(x / this.width);
+            return [row, col];
+        }
+
+
+        filldata() {
+            let x = this.width;
+            let y = this.height;
+            for (let i = 0; i < data.length; i++) {
+                let obj = data[i];
+                for (let key in obj) {
+                    this.cella = new cell(x + this.width / 2, y + 25, obj[key]);
+                    x += this.width;
+                }
+                x = this.width;
+                y += this.height;
+            }
+        }
+
+        highlight(x, y) {
+            let row = Math.floor(y / this.height);
+            let col = Math.floor(x / this.width);
+            //clear canvas first
+            if (row == 0 || col == 0) {
+                return;
+            }
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            this.fillgrid();
+            this.filldata();
+            ctx.fillStyle = "rgba(0, 255, 48, 0.25)";
+            ctx.fillRect(col * this.width, row * this.height, this.width, this.height);
+            ctx.strokeRect(col * this.width, row * this.height, this.width, this.height);
+
+            ctx.fillRect(0, row * this.height, this.width, this.height);
+            ctx.strokeRect(0, row * this.height, this.width, this.height);
+            ctx.fillRect(col * this.width, 0, this.width, this.height);
+            ctx.strokeRect(col * this.width, 0, this.width, this.height);
+        }
+
+
+        highlight_multiple(startCellx, startCelly, endCellx, endCelly) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            this.fillgrid();
+            this.filldata();
+            ctx.fillStyle = "rgba(0, 255, 48, 0.25)";
+            ctx.fillRect(startCellx * this.width, startCelly * this.height, (endCellx - startCellx + 1) * this.width, (endCelly - startCelly + 1) * this.height);
+            ctx.strokeRect(startCellx * this.width, startCelly * this.height, (endCellx - startCellx + 1) * this.width, (endCelly - startCelly + 1) * this.height);
+            ctx.fillRect(0, startCelly * this.height, this.width, (endCelly - startCelly + 1) * this.height);
+            ctx.strokeRect(0, startCelly * this.height, this.width, (endCelly - startCelly + 1) * this.height);
+            ctx.fillRect(startCellx * this.width, 0, (endCellx - startCellx + 1) * this.width, this.height);
+            ctx.strokeRect(startCellx * this.width, 0, (endCellx - startCellx + 1) * this.width, this.height);
+        }
+
+        refresh() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            this.fillgrid();
+            this.filldata();
+        }
+
+        vertical_offsets = {};
+        resizerows(rowid, height) {
+
+            this.vertical_offsets[rowid] = height;
+            //// REWRITTEN FILLGRID FUNCTION
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "rgba(0, 255, 48, 0.25)";
+            ctx.fillRect(0, this.height, this.width, canvas.height);
+            ctx.fillRect(this.width, 0, canvas.width, this.height);
+            ctx.beginPath();
+            for (let i = 0; i < canvas.width / this.width; i++) {
+                ctx.moveTo(0.5 + i * this.width, 0);
+                ctx.lineTo(0.5 + i * this.width, canvas.height);
+                ctx.stroke();
+            }
+            for (let i = 0; i < canvas.height / this.height; i++) {
+                if (i > rowid) {
+                    ctx.moveTo(0, 0.5 + (i - 1) * this.height + height);
+                    ctx.lineTo(canvas.width, 0.5 + (i - 1) * this.height + height);
+                    ctx.stroke();
+                } else {
+                    ctx.moveTo(0, 0.5 + i * this.height);
+                    ctx.lineTo(canvas.width, 0.5 + i * this.height);
+                    ctx.stroke();
+                }
+            }
+
+            for (let j = 1; j < window.innerHeight / this.height; j++) {
+                if (j > rowid) {
+                    this.cella = new cell(this.width / 2, 25 + this.height * (j - 1) + height, j);
+                } else {
+                    this.cella = new cell(this.width / 2, 25 + this.height * j, j);
+                }
+            }
+            for (let j = 1; j < window.innerWidth / this.width; j++) {
+                this.cella = new cell(this.width * j + this.width / 2, this.height / 2 + 10, String.fromCharCode(64 + j % 26));
+            }
+
+            //// REWRITTEN FILLDATA FUNCTION
+            let x = this.width;
+            let y = this.height;
+            for (let i = 0; i < data.length; i++) {
+                let obj = data[i];
+                for (let key in obj) {
+                    if (i >= rowid) {
+                        this.cella = new cell(x + this.width / 2, y + 25 + height - this.height, obj[key]);
+                    } else {
+                        this.cella = new cell(x + this.width / 2, y + 25, obj[key]);
+                    }
+                    x += this.width;
+                }
+                x = this.width;
+                y += this.height;
+            }
+
+        }
+
+
+        constructor() {
+            this.fillgrid();
+            this.filldata();
+        }
+    }
+
+
+    let c = new grid();
+    let isdragging = false;
+    let isresizingrows = false;
+    let startx, starty, start, end;
+
+
+    canvas.addEventListener("mousedown", (e) => {
+        startx = e.clientX;
+        starty = e.clientY;
+        start = c.getcell(startx, starty);
+        if (e.clientX > c.width) {
+            if (e.clientX < c.width || e.clientY < c.height) {
+                return;
+            }
+            isdragging = true;
+            c.highlight_multiple(start[1], start[0], start[1], start[0]);
+        } else {
+            if ((e.clientY % c.height < 15)) {
+                isresizingrows = true;
+            }
+        }
+    });
+    canvas.addEventListener("mousemove", (e) => {
+        if ((e.clientX < c.width) && (e.clientY % c.height < 15)) {
+            canvas.style.cursor = "row-resize";
+        } else {
+            if (isresizingrows) {
+                canvas.style.cursor = "row-resize";
+            } else {
+                canvas.style.cursor = "default";
+            }
+        }
+        if (isresizingrows) {
+            c.resizerows(start[0] - 1, Math.max(40, e.clientY - starty + c.height));
+        } else {
+            if (isdragging) {
+                end = c.getcell(e.clientX, e.clientY);
+                const [startCellx, endCellx] = [start[1], end[1]].sort((a, b) => a - b);
+                const [startCelly, endCelly] = [start[0], end[0]].sort((a, b) => a - b);
+                c.highlight_multiple(startCellx, startCelly, endCellx, endCelly);
+            }
+        }
+    });
+
+    canvas.addEventListener("mouseup", (e) => {
+        isdragging = false;
+        isresizingrows = false;
+        canvas.style.cursor = "default";
+    });
+
+
+
+
+
+
+</script>
+
+</html>
