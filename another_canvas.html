@@ -391,6 +391,10 @@
             ctx.fillRect(this.width, 0, canvas.width, this.height);
             ctx.beginPath();
             let offset_y = 0;
+            ctx.moveTo(0, 0.5 + this.height);
+            ctx.lineTo(canvas.width, 0.5 + this.height);
+            ctx.stroke();
+            this.cella = new cell(this.width / 2, 25 + this.height, 1 + this.startpos);
 
 
             for (let i = 0; i < canvas.width / this.width; i++) {
@@ -400,17 +404,16 @@
             }
 
 
-            for (let i = 0; i < canvas.height / this.height; i++) {
-                if (this.vertical_offsets[i]) {
-                    offset_y += this.vertical_offsets[i];
+            for (let i = 2; i < canvas.height / this.height; i++) {
+                if (this.vertical_offsets[i + this.startpos]) {
+                    offset_y += this.vertical_offsets[i + this.startpos];
                 }
                 this.vertical_lines_pos[i] = this.height * i + offset_y;
                 ctx.moveTo(0, 0.5 + (i) * this.height + offset_y);
                 ctx.lineTo(canvas.width, 0.5 + (i) * this.height + offset_y);
                 ctx.stroke();
-                if (i > 0) {
-                    this.cella = new cell(this.width / 2, 25 + this.height * (i) + offset_y, i + this.startpos);
-                }
+
+                this.cella = new cell(this.width / 2, 25 + this.height * (i) + offset_y, i + this.startpos);
             }
 
             for (let j = 1; j < window.innerWidth / this.width; j++) {
@@ -436,8 +439,8 @@
             let y = this.height;
             for (let i = 0; i < data.length; i++) {
                 let offset_y = 0;
-                if (this.vertical_offsets[i + 2]) {
-                    offset_y += this.vertical_offsets[i + 2];
+                if (this.vertical_offsets[i + 2 + this.startpos]) {
+                    offset_y += this.vertical_offsets[i + 2 + this.startpos];
                 }
                 let obj = data[i + this.startpos];
                 for (let key in obj) {
@@ -468,8 +471,7 @@
         }
 
         resizerows(rowid, height) {
-
-            this.vertical_offsets[rowid] = height;
+            this.vertical_offsets[rowid + this.startpos] = height;
 
             this.fillgrid();
             this.filldata();
