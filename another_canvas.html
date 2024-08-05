@@ -491,8 +491,21 @@
         }
 
         editcell(cell) {
-            ctx.lineWidth = 5;
-            ctx.strokeRect(cell[1] * this.width, this.vertical_lines_pos[cell[0]], this.width, (this.vertical_lines_pos[cell[0] + 1] - this.vertical_lines_pos[cell[0]]));
+            // ctx.strokeRect(cell[1] * this.width, this.vertical_lines_pos[cell[0]], this.width, (this.vertical_lines_pos[cell[0] + 1] - this.vertical_lines_pos[cell[0]]));
+            //add html input box
+            this.refresh();
+            let input = document.createElement("input");
+            input.type = "text";
+            input.style.position = "absolute";
+            input.style.left = cell[1] * this.width + 7 + "px";
+            input.style.top = this.vertical_lines_pos[cell[0]] + 5 + "px";
+            input.style.width = this.width - 5 + "px";
+            input.style.height = (this.vertical_lines_pos[cell[0] + 1] - this.vertical_lines_pos[cell[0]]) + "px";
+            input.style.border = "3px solid black";
+            input.style.textAlign = "center";
+            input.value = data[cell[0] - 2][Object.keys(data[cell[0] - 2])[cell[1] - 1]];
+            document.body.appendChild(input);
+
         }
     }
 
