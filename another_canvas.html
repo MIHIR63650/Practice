@@ -395,6 +395,8 @@
             ctx.lineTo(canvas.width, 0.5 + this.height);
             ctx.stroke();
             this.cella = new cell(this.width / 2, 25 + this.height, 1 + this.startpos);
+            this.vertical_lines_pos[1] = this.height;
+
 
 
             for (let i = 0; i < canvas.width / this.width; i++) {
@@ -431,7 +433,7 @@
                 }
             }
 
-            return [0, col];
+            return [1, col];
         }
 
         filldata() {
@@ -486,6 +488,11 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             this.fillgrid(ofs);
             this.filldata();
+        }
+
+        editcell(cell) {
+            ctx.lineWidth = 5;
+            ctx.strokeRect(cell[1] * this.width, this.vertical_lines_pos[cell[0]], this.width, (this.vertical_lines_pos[cell[0] + 1] - this.vertical_lines_pos[cell[0]]));
         }
     }
 
@@ -549,6 +556,13 @@
     }, {
         passive: true
     });
+
+    document.addEventListener("dblclick", (e) => {
+        let cell = c.getcell(e.clientX, e.clientY);
+        c.editcell(cell);
+    });
+
+
 
 </script>
 
