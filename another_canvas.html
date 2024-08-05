@@ -361,6 +361,7 @@
     }
 
 
+
     class grid {
         width = 100;
         height = 40;
@@ -369,6 +370,7 @@
         vertical_lines_pos = [];
 
         isNumberInRange(num) {
+
             for (let i = 0; i < this.vertical_lines_pos.length; i++) {
                 if (num >= this.vertical_lines_pos[i] && num <= this.vertical_lines_pos[i] + 15) {
                     return true;
@@ -376,8 +378,13 @@
             }
             return false;
         }
-
-        fillgrid() {
+        startpos = 0;
+        fillgrid(offset_vscroll = 0) {
+            if (offset_vscroll > 0) {
+                this.startpos++;
+            } else if (offset_vscroll < 0) {
+                this.startpos = Math.max(0, this.startpos - 1);
+            }
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = "rgba(0, 255, 48, 0.25)";
             ctx.fillRect(0, this.height, this.width, canvas.height);
@@ -402,7 +409,7 @@
                 ctx.lineTo(canvas.width, 0.5 + (i) * this.height + offset_y);
                 ctx.stroke();
                 if (i > 0) {
-                    this.cella = new cell(this.width / 2, 25 + this.height * (i) + offset_y, i);
+                    this.cella = new cell(this.width / 2, 25 + this.height * (i) + offset_y, i + this.startpos);
                 }
             }
 
@@ -432,7 +439,7 @@
                 if (this.vertical_offsets[i + 2]) {
                     offset_y += this.vertical_offsets[i + 2];
                 }
-                let obj = data[i];
+                let obj = data[i + this.startpos];
                 for (let key in obj) {
                     this.cella = new cell(x + this.width / 2, y + 25, obj[key]);
                     x += this.width;
@@ -470,6 +477,12 @@
 
         constructor() {
             this.fillgrid();
+            this.filldata();
+        }
+
+        scrolldown(ofs) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            this.fillgrid(ofs);
             this.filldata();
         }
     }
@@ -527,6 +540,12 @@
         isdragging = false;
         isresizingrows = false;
         canvas.style.cursor = "default";
+    });
+
+    canvas.addEventListener('wheel', (e) => {
+        c.scrolldown(e.deltaY);
+    }, {
+        passive: true
     });
 
 </script>
