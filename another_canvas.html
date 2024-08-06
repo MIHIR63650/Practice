@@ -363,14 +363,13 @@
 
 
     class grid {
-        width = 100;
-        height = 40;
+        width = 130;
+        height = 32;
         cella;
         vertical_offsets = {}
         vertical_lines_pos = [];
-
+        input;
         isNumberInRange(num) {
-
             for (let i = 0; i < this.vertical_lines_pos.length; i++) {
                 if (num >= this.vertical_lines_pos[i] && num <= this.vertical_lines_pos[i] + 15) {
                     return true;
@@ -393,11 +392,10 @@
             let offset_y = 0;
             ctx.moveTo(0, 0.5 + this.height);
             ctx.lineTo(canvas.width, 0.5 + this.height);
+            ctx.style = "rgba(0, 0, 0, 0.5)";
             ctx.stroke();
-            this.cella = new cell(this.width / 2, 25 + this.height, 1 + this.startpos);
+            this.cella = new cell(this.width / 2, 22 + this.height, 1 + this.startpos);
             this.vertical_lines_pos[1] = this.height;
-
-
 
             for (let i = 0; i < canvas.width / this.width; i++) {
                 ctx.moveTo(0.5 + i * this.width, 0);
@@ -415,11 +413,11 @@
                 ctx.lineTo(canvas.width, 0.5 + (i) * this.height + offset_y);
                 ctx.stroke();
 
-                this.cella = new cell(this.width / 2, 25 + this.height * (i) + offset_y, i + this.startpos);
+                this.cella = new cell(this.width / 2, 22 + this.height * (i) + offset_y, i + this.startpos);
             }
 
             for (let j = 1; j < window.innerWidth / this.width; j++) {
-                this.cella = new cell(this.width * j + this.width / 2, this.height / 2 + 10, String.fromCharCode(64 + j % 26));
+                this.cella = new cell(this.width * j + this.width / 2, this.height / 2 + 7, String.fromCharCode(64 + j % 26));
             }
         }
 
@@ -446,7 +444,7 @@
                 }
                 let obj = data[i + this.startpos];
                 for (let key in obj) {
-                    this.cella = new cell(x + this.width / 2, y + 25, obj[key]);
+                    this.cella = new cell(x + this.width / 2, y + 22, obj[key]);
                     x += this.width;
                 }
                 x = this.width;
@@ -491,21 +489,21 @@
         }
 
         editcell(cell) {
-            // ctx.strokeRect(cell[1] * this.width, this.vertical_lines_pos[cell[0]], this.width, (this.vertical_lines_pos[cell[0] + 1] - this.vertical_lines_pos[cell[0]]));
-            //add html input box
-            this.refresh();
-            let input = document.createElement("input");
-            input.type = "text";
-            input.style.position = "absolute";
-            input.style.left = cell[1] * this.width + 7 + "px";
-            input.style.top = this.vertical_lines_pos[cell[0]] + 5 + "px";
-            input.style.width = this.width - 5 + "px";
-            input.style.height = (this.vertical_lines_pos[cell[0] + 1] - this.vertical_lines_pos[cell[0]]) + "px";
-            input.style.border = "3px solid black";
-            input.style.textAlign = "center";
-            input.value = data[cell[0] - 2][Object.keys(data[cell[0] - 2])[cell[1] - 1]];
-            document.body.appendChild(input);
-
+            if (cell[0] > 0 && cell[1] > 0) {
+                this.refresh();
+                this.input = document.createElement("input");
+                this.input.type = "text";
+                this.input.style.position = "absolute";
+                this.input.style.left = cell[1] * this.width + 6 + "px";
+                this.input.style.top = this.vertical_lines_pos[cell[0]] + 5 + "px";
+                this.input.style.width = this.width - 5 + "px";
+                this.input.style.height = (this.vertical_lines_pos[cell[0] + 1] - this.vertical_lines_pos[cell[0]]) + "px";
+                this.input.style.border = "3px solid black";
+                this.input.style.textAlign = "center";
+                this.input.value = data[cell[0] - 2][Object.keys(data[cell[0] - 2])[cell[1] - 1]];
+                this.input.id = "input";
+                document.body.appendChild(this.input);
+            }
         }
     }
 
@@ -541,7 +539,7 @@
             if (isresizingrows) {
                 canvas.style.cursor = "row-resize";
             } else {
-                canvas.style.cursor = "crosshair";
+                canvas.style.cursor = "cell";
             }
         }
         if (isresizingrows) {
@@ -574,6 +572,7 @@
         let cell = c.getcell(e.clientX, e.clientY);
         c.editcell(cell);
     });
+
 
 
 
