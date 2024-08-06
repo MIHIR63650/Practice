@@ -41,7 +41,7 @@
 
 <body>
     <canvas></canvas>
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
         <button onclick="run()">fetch</button>
         <!-- <form action="/action_page.php">
             <input type="file" id="myFile" name="filename">
@@ -219,6 +219,7 @@
 
     const run = () => {
         const fetchapi = fetch("http://localhost:3000/").then((res) => res.json()).then((result) => {
+            document.getElementById("sidebar").style.display = "none";
             data = result.data;
             let c = new grid();
             let isdragging = false;
