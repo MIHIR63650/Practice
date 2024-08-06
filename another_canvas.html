@@ -23,326 +23,35 @@
             background-color: white;
             margin: auto;
         }
+
+        .sidebar {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 200px;
+            border-radius: 7px;
+            background-color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
 <body>
     <canvas></canvas>
+    <div class="sidebar">
+        <button onclick="run()">fetch</button>
+        <!-- <form action="/action_page.php">
+            <input type="file" id="myFile" name="filename">
+            <input type="submit">
+        </form> -->
+    </div>
 </body>
 <script>
-    const data = [
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "abcd@gmail",
-            Salary: 15000,
-            dob: "12/12/1995",
-            name: "abcd",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "pqr@gmail",
-            Salary: 1000,
-            dob: "12/12/1991",
-            name: "pqr",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1992",
-            name: "xyz",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "pqr@gmail",
-            Salary: 1000,
-            dob: "12/12/1991",
-            name: "pqr",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1992",
-            name: "xyz",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "pqr@gmail",
-            Salary: 1000,
-            dob: "12/12/1991",
-            name: "pqr",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1992",
-            name: "xyz",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1993",
-            name: "bac",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "abcd@gmail",
-            Salary: 15000,
-            dob: "12/12/1995",
-            name: "abcd",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "pqr@gmail",
-            Salary: 1000,
-            dob: "12/12/1991",
-            name: "pqr",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1992",
-            name: "xyz",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "pqr@gmail",
-            Salary: 1000,
-            dob: "12/12/1991",
-            name: "pqr",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1992",
-            name: "xyz",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "pqr@gmail",
-            Salary: 1000,
-            dob: "12/12/1991",
-            name: "pqr",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1992",
-            name: "xyz",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1993",
-            name: "bac",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "abcd@gmail",
-            Salary: 15000,
-            dob: "12/12/1995",
-            name: "abcd",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "pqr@gmail",
-            Salary: 1000,
-            dob: "12/12/1991",
-            name: "pqr",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1992",
-            name: "xyz",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "pqr@gmail",
-            Salary: 1000,
-            dob: "12/12/1991",
-            name: "pqr",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1992",
-            name: "xyz",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "pqr@gmail",
-            Salary: 1000,
-            dob: "12/12/1991",
-            name: "pqr",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1992",
-            name: "xyz",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1993",
-            name: "bac",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "abcd@gmail",
-            Salary: 15000,
-            dob: "12/12/1995",
-            name: "abcd",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "pqr@gmail",
-            Salary: 1000,
-            dob: "12/12/1991",
-            name: "pqr",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1992",
-            name: "xyz",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "pqr@gmail",
-            Salary: 1000,
-            dob: "12/12/1991",
-            name: "pqr",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1992",
-            name: "xyz",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1990",
-            name: "abc",
-        },
-        {
-            email: "pqr@gmail",
-            Salary: 1000,
-            dob: "12/12/1991",
-            name: "pqr",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1992",
-            name: "xyz",
-        },
-        {
-            email: "abc@gmail",
-            Salary: 1000,
-            dob: "12/12/1993",
-            name: "bac",
-        },
+    var data = [
+
     ];
 
 
@@ -508,70 +217,77 @@
     }
 
 
+    const run = () => {
+        const fetchapi = fetch("http://localhost:3000/").then((res) => res.json()).then((result) => {
+            data = result.data;
+            let c = new grid();
+            let isdragging = false;
+            let isresizingrows = false;
+            let startx, starty, start, end;
 
-    let c = new grid();
-    let isdragging = false;
-    let isresizingrows = false;
-    let startx, starty, start, end;
+            canvas.addEventListener("mousedown", (e) => {
+                startx = e.clientX;
+                starty = e.clientY;
+                start = c.getcell(startx, starty);
+                if (e.clientX > c.width) {
+                    if (e.clientX < c.width || e.clientY < c.height) {
+                        return;
+                    }
+                    isdragging = true;
+                    c.highlight_multiple(start[1], start[0], start[1], start[0]);
+                } else {
+                    if ((c.isNumberInRange(e.clientY))) {
+                        isresizingrows = true;
+                    }
+                }
+            });
+
+            canvas.addEventListener("mousemove", (e) => {
+                if ((e.clientX < c.width) && (c.isNumberInRange(e.clientY))) {
+                    canvas.style.cursor = "row-resize";
+                } else {
+                    if (isresizingrows) {
+                        canvas.style.cursor = "row-resize";
+                    } else {
+                        canvas.style.cursor = "cell";
+                    }
+                }
+                if (isresizingrows) {
+                    if (start[0] > 1) {
+                        c.resizerows(start[0], Math.max(0, e.clientY - starty));
+                    }
+                } else {
+                    if (isdragging) {
+                        end = c.getcell(e.clientX, e.clientY);
+                        const [startCellx, endCellx] = [start[1], end[1]].sort((a, b) => a - b);
+                        const [startCelly, endCelly] = [start[0], end[0]].sort((a, b) => a - b);
+                        c.highlight_multiple(startCellx, startCelly, endCellx, endCelly);
+                    }
+                }
+            });
+
+            canvas.addEventListener("mouseup", (e) => {
+                isdragging = false;
+                isresizingrows = false;
+                canvas.style.cursor = "default";
+            });
+
+            canvas.addEventListener('wheel', (e) => {
+                c.scrolldown(e.deltaY);
+            }, {
+                passive: true
+            });
+
+            document.addEventListener("dblclick", (e) => {
+                let cell = c.getcell(e.clientX, e.clientY);
+                c.editcell(cell);
+            });
+        }).catch((err) => {
+            alert("Error fetching data");
+        });
+    }
 
 
-    canvas.addEventListener("mousedown", (e) => {
-        startx = e.clientX;
-        starty = e.clientY;
-        start = c.getcell(startx, starty);
-        if (e.clientX > c.width) {
-            if (e.clientX < c.width || e.clientY < c.height) {
-                return;
-            }
-            isdragging = true;
-            c.highlight_multiple(start[1], start[0], start[1], start[0]);
-        } else {
-            if ((c.isNumberInRange(e.clientY))) {
-                isresizingrows = true;
-            }
-        }
-    });
-
-    canvas.addEventListener("mousemove", (e) => {
-        if ((e.clientX < c.width) && (c.isNumberInRange(e.clientY))) {
-            canvas.style.cursor = "row-resize";
-        } else {
-            if (isresizingrows) {
-                canvas.style.cursor = "row-resize";
-            } else {
-                canvas.style.cursor = "cell";
-            }
-        }
-        if (isresizingrows) {
-            if (start[0] > 1) {
-                c.resizerows(start[0], Math.max(0, e.clientY - starty));
-            }
-        } else {
-            if (isdragging) {
-                end = c.getcell(e.clientX, e.clientY);
-                const [startCellx, endCellx] = [start[1], end[1]].sort((a, b) => a - b);
-                const [startCelly, endCelly] = [start[0], end[0]].sort((a, b) => a - b);
-                c.highlight_multiple(startCellx, startCelly, endCellx, endCelly);
-            }
-        }
-    });
-
-    canvas.addEventListener("mouseup", (e) => {
-        isdragging = false;
-        isresizingrows = false;
-        canvas.style.cursor = "default";
-    });
-
-    canvas.addEventListener('wheel', (e) => {
-        c.scrolldown(e.deltaY);
-    }, {
-        passive: true
-    });
-
-    document.addEventListener("dblclick", (e) => {
-        let cell = c.getcell(e.clientX, e.clientY);
-        c.editcell(cell);
-    });
 
 
 

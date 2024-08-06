@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Practice\\T2\\.NET\\TodoApi\\TodoApi.csproj": {}
+    "c:\\Practice\\T2\\.NET\\TodoApi\\TodoApi.csproj": {}
   },
   "projects": {
-    "C:\\Practice\\T2\\.NET\\TodoApi\\TodoApi.csproj": {
+    "c:\\Practice\\T2\\.NET\\TodoApi\\TodoApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Practice\\T2\\.NET\\TodoApi\\TodoApi.csproj",
+        "projectUniqueName": "c:\\Practice\\T2\\.NET\\TodoApi\\TodoApi.csproj",
         "projectName": "TodoApi",
-        "projectPath": "C:\\Practice\\T2\\.NET\\TodoApi\\TodoApi.csproj",
+        "projectPath": "c:\\Practice\\T2\\.NET\\TodoApi\\TodoApi.csproj",
         "packagesPath": "C:\\Users\\MIHIR.SAVLA\\.nuget\\packages\\",
-        "outputPath": "C:\\Practice\\T2\\.NET\\TodoApi\\obj\\",
+        "outputPath": "c:\\Practice\\T2\\.NET\\TodoApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MIHIR.SAVLA\\AppData\\Roaming\\NuGet\\NuGet.Config"
