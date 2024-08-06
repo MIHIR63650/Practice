@@ -94,12 +94,38 @@ namespace dotnet_task.Controllers
             return Ok(new { message = "File uploaded and data inserted successfully.", filePath });
         }
 
-        private string? ExtractDuplicateEmail(string errorMessage)
-        {
 
-            var match = System.Text.RegularExpressions.Regex.Match(errorMessage, @"key '(.+?)'");
-            return match.Success ? match.Groups[1].Value : null;
+
+        [HttpGet]
+        public async Task<IActionResult> GetEmployees()
+        {
+            string connectionString = "Server=localhost;Database=employees;User=root;Password=root;";
+            var employees = new List<dynamic>();
+
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                var query = "SELECT * FROM employee where id<100;";
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            employees.Add(new
+                            {
+                                Name = reader["Name"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                Contact = reader["Contact"].ToString()
+                            });
+                        }
+                    }
+                }
+            }
+
+            return Ok(employees);
         }
+
     }
 }
 
