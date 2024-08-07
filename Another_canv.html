@@ -201,8 +201,7 @@
             ctx.strokeRect(0, this.vertical_lines_pos[startCelly], this.width, (this.vertical_lines_pos[endCelly + 1] - this.vertical_lines_pos[startCelly]));
             ctx.fillRect(this.horizontal_lines_pos[startCellx], 0, (this.horizontal_lines_pos[endCellx + 1] - this.horizontal_lines_pos[startCellx]), this.height);
             ctx.strokeRect(this.horizontal_lines_pos[startCellx], 0, (this.horizontal_lines_pos[endCellx + 1] - this.horizontal_lines_pos[startCellx]), this.height);
-            // ctx.fillRect(startCellx * this.width, 0, (endCellx - startCellx + 1) * this.width, this.height);
-            // ctx.strokeRect(startCellx * this.width, 0, (endCellx - startCellx + 1) * this.width, this.height);
+
         }
 
         refresh() {
@@ -241,13 +240,15 @@
                 this.input = document.createElement("input");
                 this.input.type = "text";
                 this.input.style.position = "absolute";
-                this.input.style.left = cell[1] * this.width + 6 + "px";
+                this.input.style.left = this.horizontal_lines_pos[cell[1]] + 6 + "px";
                 this.input.style.top = this.vertical_lines_pos[cell[0]] + 5 + "px";
-                this.input.style.width = this.width - 5 + "px";
+                this.input.style.width = (this.horizontal_lines_pos[cell[1] + 1] - this.horizontal_lines_pos[cell[1]]) - 5 + "px";
                 this.input.style.height = (this.vertical_lines_pos[cell[0] + 1] - this.vertical_lines_pos[cell[0]]) + "px";
                 this.input.style.border = "3px solid black";
                 this.input.style.textAlign = "center";
-                this.input.value = data[cell[0] - 1][Object.keys(data[cell[0] - 2])[cell[1] - 1]];
+                if (data[cell[0] - 1 + this.startpos][Object.keys(data[cell[0] - 2])[cell[1] - 1]]) {
+                    this.input.value = data[cell[0] - 1 + this.startpos][Object.keys(data[cell[0] - 2])[cell[1] - 1]];
+                }
                 this.input.id = "input";
                 document.body.appendChild(this.input);
             }
@@ -263,9 +264,10 @@
             let isdragging = false;
             let isresizingrows = false;
             let isresizingcols = false;
-            let startx, starty, start, end;
+            let startx, starty, start, end, initpos = 0;
 
             canvas.addEventListener("mousedown", (e) => {
+                initpos = 0;
                 startx = e.clientX;
                 starty = e.clientY;
                 start = c.getcell(startx, starty);
@@ -336,7 +338,7 @@
                 let cell = c.getcell(e.clientX, e.clientY);
                 c.editcell(cell);
                 document.getElementById("input").addEventListener("blur", (e) => {
-                    data[cell[0] - 1][Object.keys(data[cell[0] - 2])[cell[1] - 1]] = e.target.value;
+                    data[cell[0] - 1 + c.startpos][Object.keys(data[cell[0] - 2])[cell[1] - 1]] = e.target.value;
                     c.removeinput();
                 });
             });
