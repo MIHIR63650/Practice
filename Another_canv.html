@@ -193,6 +193,7 @@
         highlight_multiple(startCellx, startCelly, endCellx, endCelly) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             this.fillgrid();
+
             this.filldata();
             ctx.fillStyle = "rgba(0, 255, 48, 0.25)";
             ctx.fillRect(this.horizontal_lines_pos[startCellx], this.vertical_lines_pos[startCelly], (this.horizontal_lines_pos[endCellx + 1] - this.horizontal_lines_pos[startCellx]), (this.vertical_lines_pos[endCelly + 1] - this.vertical_lines_pos[startCelly]));
@@ -251,6 +252,7 @@
                 }
                 this.input.id = "input";
                 document.body.appendChild(this.input);
+                this.input.focus()
             }
         }
     }
@@ -264,10 +266,11 @@
             let isdragging = false;
             let isresizingrows = false;
             let isresizingcols = false;
-            let startx, starty, start, end, initpos = 0;
+            let startx, starty, start, end, initpos_y = 0, initpos_x = 0;
 
             canvas.addEventListener("mousedown", (e) => {
-                initpos = 0;
+                initpos_y = 0;
+                initpos_x = 0;
                 startx = e.clientX;
                 starty = e.clientY;
                 start = c.getcell(startx, starty);
@@ -277,10 +280,16 @@
                 } else if (e.clientX < c.width) {
                     if ((c.isNumberInRange_y(e.clientY))) {
                         isresizingrows = true;
+                        if (c.vertical_offsets[start[0] + c.startpos]) {
+                            initpos_y = c.vertical_offsets[start[0] + c.startpos];
+                        }
                     }
                 } else {
                     if (c.isNumberInRange_x(e.clientX)) {
                         isresizingcols = true;
+                        if (c.horizontal_offsets[start[1] + c.startpos]) {
+                            initpos_x = c.horizontal_offsets[start[1] + c.startpos];
+                        }
                     }
                 }
             });
@@ -293,6 +302,8 @@
                 }
                 else {
                     if (isresizingrows) {
+
+
                         canvas.style.cursor = "row-resize";
                     }
                     if (isresizingcols) {
@@ -303,11 +314,11 @@
                 }
                 if (isresizingrows) {
                     if (start[0] > 1) {
-                        c.resizerows(start[0], Math.max(0, e.clientY - starty));
+                        c.resizerows(start[0], Math.max(0, e.clientY - starty + initpos_y));
                     }
                 } else if (isresizingcols) {
                     if (start[1] > 1) {
-                        c.resizecols(start[1], Math.max(0, e.clientX - startx));
+                        c.resizecols(start[1], Math.max(0, e.clientX - startx + initpos_x));
                     }
                 }
                 else {
@@ -325,16 +336,17 @@
                 isresizingrows = false;
                 isresizingcols = false;
                 canvas.style.cursor = "default";
-                c.removeinput();
             });
 
             canvas.addEventListener('wheel', (e) => {
                 c.scrolldown(e.deltaY);
+                c.removeinput();
             }, {
                 passive: true
             });
 
             document.addEventListener("dblclick", (e) => {
+                c.removeinput();
                 let cell = c.getcell(e.clientX, e.clientY);
                 c.editcell(cell);
                 document.getElementById("input").addEventListener("blur", (e) => {
@@ -347,10 +359,6 @@
             console.log(err)
         });
     }
-
-
-
-
 
 
 </script>
