@@ -52,7 +52,6 @@
 <script>
     var data = [];
 
-
     const canvas = document.querySelector("canvas");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -206,6 +205,24 @@
 
         }
 
+        highlight_row(rowid) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            this.fillgrid();
+            this.filldata();
+            ctx.fillStyle = "rgba(0, 255, 48, 0.25)";
+            ctx.fillRect(0, this.vertical_lines_pos[rowid], canvas.width, (this.vertical_lines_pos[rowid + 1] - this.vertical_lines_pos[rowid]));
+            ctx.strokeRect(0, this.vertical_lines_pos[rowid], canvas.width, (this.vertical_lines_pos[rowid + 1] - this.vertical_lines_pos[rowid]));
+        }
+
+        highlight_col(colid) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            this.fillgrid();
+            this.filldata();
+            ctx.fillStyle = "rgba(0, 255, 48, 0.25)";
+            ctx.fillRect(this.horizontal_lines_pos[colid], 0, (this.horizontal_lines_pos[colid + 1] - this.horizontal_lines_pos[colid]), canvas.height);
+            ctx.strokeRect(this.horizontal_lines_pos[colid], 0, (this.horizontal_lines_pos[colid + 1] - this.horizontal_lines_pos[colid]), canvas.height);
+        }
+
         refresh() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             this.fillgrid();
@@ -232,7 +249,7 @@
 
         scrolldown(ofs) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            if (this.startpos != 0 && this.startpos % 100 == 0) {
+            if (this.startpos != 0 && this.startpos % 120 == 0) {
                 console.log("fetching data");
                 this.pagecount++;
                 const fetchapi = fetch(`http://localhost:5208/upload?page=${this.pagecount}`).then((res) => res.json()).then((result) => {
@@ -295,6 +312,8 @@
                         if (c.vertical_offsets[start[0] + c.startpos]) {
                             initpos_y = c.vertical_offsets[start[0] + c.startpos];
                         }
+                    } else {
+                        c.highlight_row(start[0]);
                     }
                 } else {
                     if (c.isNumberInRange_x(e.clientX)) {
@@ -302,6 +321,8 @@
                         if (c.horizontal_offsets[start[1]]) {
                             initpos_x = c.horizontal_offsets[start[1]];
                         }
+                    } else {
+                        c.highlight_col(start[1]);
                     }
                 }
             });
@@ -309,21 +330,26 @@
 
 
             canvas.addEventListener("mousemove", (e) => {
-                if ((e.clientX < c.width) && (c.isNumberInRange_y(e.clientY))) {
-                    canvas.style.cursor = "row-resize";
-                } else if ((e.clientY < c.height) && (c.isNumberInRange_x(e.clientX))) {
-                    canvas.style.cursor = "col-resize";
+                if ((e.clientX < c.width)) {
+                    if (c.isNumberInRange_y(e.clientY)) {
+                        canvas.style.cursor = "row-resize";
+                    } else {
+                        canvas.style.cursor = "e-resize";
+                    }
+                } else if (e.clientY < c.height) {
+                    if (c.isNumberInRange_x(e.clientX)) {
+                        canvas.style.cursor = "col-resize";
+                    } else {
+                        canvas.style.cursor = "s-resize";
+                    }
                 }
                 else {
+                    canvas.style.cursor = "cell";
                     if (isresizingrows) {
-
-
                         canvas.style.cursor = "row-resize";
                     }
                     if (isresizingcols) {
                         canvas.style.cursor = "col-resize";
-                    } else {
-                        canvas.style.cursor = "cell";
                     }
                 }
                 if (isresizingrows) {
@@ -368,11 +394,23 @@
                     c.removeinput();
                 });
             });
+            window.onresize = function () {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                c.refresh();
+            };
         }).catch((err) => {
             alert("Error fetching data");
             console.log(err)
         });
     }
+
+
+    window.onresize = function () {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    };
+
 
 
 </script>
