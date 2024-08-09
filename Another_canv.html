@@ -80,6 +80,8 @@
         horizontal_offsets = {}
         horizontal_lines_pos = [];
         input;
+        startpos = 0;
+        pagecount = 1;
         isNumberInRange_y(num) {
             for (let i = 0; i < this.vertical_lines_pos.length; i++) {
                 if (num >= this.vertical_lines_pos[i] && num <= this.vertical_lines_pos[i] + 10) {
@@ -96,7 +98,6 @@
             }
             return false;
         }
-        startpos = 0;
         removeinput() {
             if (document.getElementById("input")) {
                 document.getElementById("input").remove();
@@ -231,6 +232,17 @@
 
         scrolldown(ofs) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (this.startpos != 0 && this.startpos % 100 == 0) {
+                console.log("fetching data");
+                this.pagecount++;
+                const fetchapi = fetch(`http://localhost:5208/upload?page=${this.pagecount}`).then((res) => res.json()).then((result) => {
+                    console.log(result);
+                    data = data.concat(result);
+                }).catch((err) => {
+                    alert("Error fetching data");
+                    console.log(err)
+                });
+            }
             this.fillgrid(ofs);
             this.filldata();
         }
