@@ -82,7 +82,7 @@
         input;
         isNumberInRange_y(num) {
             for (let i = 0; i < this.vertical_lines_pos.length; i++) {
-                if (num >= this.vertical_lines_pos[i] && num <= this.vertical_lines_pos[i] + 15) {
+                if (num >= this.vertical_lines_pos[i] && num <= this.vertical_lines_pos[i] + 10) {
                     return true;
                 }
             }
@@ -247,7 +247,7 @@
                 this.input.style.height = (this.vertical_lines_pos[cell[0] + 1] - this.vertical_lines_pos[cell[0]]) + "px";
                 this.input.style.border = "3px solid black";
                 this.input.style.textAlign = "center";
-                if (data[cell[0] - 1 + this.startpos][Object.keys(data[cell[0] - 2])[cell[1] - 1]]) {
+                if (data[cell[0] - 1 + this.startpos] && data[cell[0] - 1 + this.startpos][Object.keys(data[cell[0] - 2])[cell[1] - 1]]) {
                     this.input.value = data[cell[0] - 1 + this.startpos][Object.keys(data[cell[0] - 2])[cell[1] - 1]];
                 }
                 this.input.id = "input";
@@ -287,8 +287,8 @@
                 } else {
                     if (c.isNumberInRange_x(e.clientX)) {
                         isresizingcols = true;
-                        if (c.horizontal_offsets[start[1] + c.startpos]) {
-                            initpos_x = c.horizontal_offsets[start[1] + c.startpos];
+                        if (c.horizontal_offsets[start[1]]) {
+                            initpos_x = c.horizontal_offsets[start[1]];
                         }
                     }
                 }
@@ -341,8 +341,8 @@
             });
 
             canvas.addEventListener('wheel', (e) => {
-                c.scrolldown(e.deltaY);
                 c.removeinput();
+                c.scrolldown(e.deltaY);
             }, {
                 passive: true
             });
