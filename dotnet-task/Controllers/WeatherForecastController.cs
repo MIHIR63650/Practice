@@ -97,7 +97,7 @@ namespace dotnet_task.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> GetEmployees()
+        public async Task<IActionResult> GetEmployees([FromQuery] int page = 1)
         {
             string connectionString = "Server=localhost;Database=employees;User=root;Password=root;";
             var employees = new List<dynamic>();
@@ -105,7 +105,8 @@ namespace dotnet_task.Controllers
             using (var connection = new MySqlConnection(connectionString))
             {
                 await connection.OpenAsync();
-                var query = "SELECT * FROM employee where id<100;";
+                int offset = (page - 1) * 180;
+                var query = $"SELECT * FROM employee WHERE id > {offset} && id<={offset + 180};";
                 using (var command = new MySqlCommand(query, connection))
                 {
                     using (var reader = await command.ExecuteReaderAsync())
